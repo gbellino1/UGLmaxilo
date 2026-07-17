@@ -17,12 +17,11 @@ def preparar_entorno_playwright():
 # --- Parámetros de búsqueda ---
 palabras_clave = ['microplacas', 'craneal', 'membrana', 'columna', 'clip']
 
-destinos = ["UGL X Lanús", "UGL XXIX Morón", "UGL XXXII Luján", "UGL IX Rosario"]
+destinos = ["UGL X Lanús", "UGL XXIX Morón", "UGL XXXII Luján"]
 
 config_ugls = {
     "UGL X LANÚS": {"cod": "10", "ext": "pdf"},
     "UGL XXIX MORÓN": {"cod": "29", "ext": "pdf"},
-    "UGL IX ROSARIO": {"cod": "9", "ext": "pdf"},
     "UGL XXXII LUJÁN": {"cod": "32", "ext": "pdf"}
 }
 
@@ -77,7 +76,7 @@ if st.button('🚀 Iniciar Búsqueda en PAMI'):
                 page.wait_for_selector('#resultados table', timeout=15000)
                 
                 # Capturamos todas las filas directamente
-                filas = page.locator('#resultados table tr').all()
+                filas = page.locator('#resultados table tbody tr').all()
                 
                 for fila in filas:
                     columnas = fila.locator('td').all()
