@@ -17,7 +17,7 @@ def preparar_entorno_playwright():
 # --- Parámetros de búsqueda ---
 palabras_clave = ['microplacas', 'craneal', 'membrana', 'columna', 'clip']
 
-destinos = ["UGL X LANÚS", "UGL XXIX MORÓN", "UGL XXXII LUJÁN", "UGL IX Rosario"]
+destinos = ["UGL X Lanús", "UGL XXIX Morón", "UGL XXXII Luján", "UGL IX Rosario"]
 
 config_ugls = {
     "UGL X LANÚS": {"cod": "10", "ext": "pdf"},
