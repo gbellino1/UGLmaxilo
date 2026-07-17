@@ -87,8 +87,10 @@ if st.button('🚀 Iniciar Búsqueda en PAMI'):
                         if any(palabra in detalle_texto for palabra in palabras_clave):
                             nro_completo = columnas[0].inner_text().strip()
                             nro_solo = nro_completo.split('/')[0]
+
+                            ugl_leida = columnas[2].inner_text().strip().upper()
                             
-                            conf = config_ugls.get(destino, {"cod": "00", "ext": "pdf"})
+                            conf = config_ugls.get(ugl_leida, {"cod": "00", "ext": "pdf"})
                             cod_ugl = conf["cod"]
                             ext = conf["ext"]
                             
