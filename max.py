@@ -76,7 +76,7 @@ if st.button('🚀 Iniciar Búsqueda en PAMI'):
                 page.wait_for_selector('#resultados table', timeout=15000)
                 
                 # Capturamos todas las filas directamente
-                filas = page.locator('#resultados table tbody tr').all()
+                filas = page.locator('#resultados table tr').all()
                 
                 for fila in filas:
                     columnas = fila.locator('td').all()
@@ -117,6 +117,7 @@ if st.button('🚀 Iniciar Búsqueda en PAMI'):
     if todos_los_resultados:
         st.success(f"¡Se encontraron {len(todos_los_resultados)} coincidencias críticas!")
         df = pd.DataFrame(todos_los_resultados)
+        df = df.drop_duplicates(subset=["Número", "UGL", "Detalle", "Fecha", "Link Principal", "Link Alternativo"])
         st.dataframe(df, use_container_width=True)
     else:
         st.info("No se detectaron licitaciones abiertas para maxilofacial bajo estos parámetros.")
