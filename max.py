@@ -117,7 +117,7 @@ if st.button('🚀 Iniciar Búsqueda en PAMI'):
     if todos_los_resultados:
         st.success(f"¡Se encontraron {len(todos_los_resultados)} coincidencias críticas!")
         df = pd.DataFrame(todos_los_resultados)
-        df = df.drop_duplicates(subset=["Número", "UGL"], keep="second")
+        df = df.drop_duplicates(subset=["Número", "UGL"], keep="first")
         st.dataframe(df, use_container_width=True)
     else:
         st.info("No se detectaron licitaciones abiertas para maxilofacial bajo estos parámetros.")
