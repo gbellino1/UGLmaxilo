@@ -35,7 +35,7 @@ if st.button('🚀 Iniciar Búsqueda en PAMI'):
     
     hoy = datetime.datetime.now()
     hoy_dia = hoy.day
-    mañana_dia = (hoy + datetime.timedelta(days=7)).day 
+    mañana_dia = (hoy + datetime.timedelta(days=5)).day 
 
     # Contexto síncrono de Playwright
     with sync_playwright() as p:
