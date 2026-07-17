@@ -17,11 +17,12 @@ def preparar_entorno_playwright():
 # --- Parámetros de búsqueda ---
 palabras_clave = ['microplacas', 'craneal', 'membrana', 'columna', 'clip']
 
-destinos = ["UGL X LANÚS", "UGL XXIX MORÓN", "UGL XXXII LUJÁN"]
+destinos = ["UGL X LANÚS", "UGL XXIX MORÓN", "UGL XXXII LUJÁN", "UGL IX Rosario"]
 
 config_ugls = {
     "UGL X LANÚS": {"cod": "10", "ext": "pdf"},
     "UGL XXIX MORÓN": {"cod": "29", "ext": "pdf"},
+    "UGL IX ROSARIO": {"cod": "9", "ext": "pdf"},
     "UGL XXXII LUJÁN": {"cod": "32", "ext": "pdf"}
 }
 
@@ -73,7 +74,7 @@ if st.button('🚀 Iniciar Búsqueda en PAMI'):
                 page.click("#srchBtn")
                 
                 # Esperar a que la tabla de resultados se renderice en el DOM
-                page.wait_for_selector('#resultados table', timeout=10000)
+                page.wait_for_selector('#resultados table', timeout=15000)
                 
                 # Capturamos todas las filas directamente
                 filas = page.locator('#resultados table tr').all()
