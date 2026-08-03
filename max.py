@@ -115,11 +115,29 @@ if st.button('🚀 Iniciar Búsqueda en PAMI'):
         browser.close()
 
     # --- Renderizado de Reportes ---
-    progreso.progress(1.0)
-    if todos_los_resultados:
-        st.success(f"¡Se encontraron {len(todos_los_resultados)} coincidencias críticas!")
-        df = pd.DataFrame(todos_los_resultados)
-        df = df.drop_duplicates(subset=["Número", "UGL"], keep="first")
-        st.dataframe(df, use_container_width=True)
-    else:
-        st.info("No se detectaron licitaciones abiertas para maxilofacial bajo estos parámetros.")
+
+        progreso.progress(1.0)
+        if todos_los_resultados:
+            st.success(f"¡Se encontraron {(len(todos_los_resultados)/2)} coincidencias críticas!")
+            
+            # Creamos el DataFrame y eliminamos duplicados por Número y UGL
+            df = pd.DataFrame(todos_los_resultados)
+            df = df.drop_duplicates(subset=["Número", "UGL"], keep="first")
+            
+            # Renderizado con configuración de hipervínculos personalizados
+            st.dataframe(
+                df,
+                use_container_width=True,
+                column_config={
+                    "Link Principal": st.column_config.LinkColumn(
+                        "Link Principal",
+                        display_text="📄 Ver PDF 1"
+                    ),
+                    "Link Alternativo": st.column_config.LinkColumn(
+                        "Link Alternativo",
+                        display_text="📄 Ver PDF 2"
+                    )
+                }
+            )
+        else:
+            st.info("No se detectaron licitaciones abiertas bajo estos parámetros.")
